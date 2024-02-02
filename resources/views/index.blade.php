@@ -114,13 +114,15 @@
     .image {
         width: 60%;
         transition: width 0.5s ease 0s;
-
+height: 60vh;
         border-radius: 20px;
 
     }
 
     .image:hover {
         width: 90%;
+        max-height: 90vh;
+        
     }
 
     .stretching {
@@ -176,9 +178,10 @@
         @foreach($posts as $post)
         <div class="mx-5 my-5 stretching ">
             @foreach($post->images as $image)
-                <img class="image mx-3 my-3" src="{{ asset($image->url) }}" alt="" class="col-6 mx-2">
+                <img class="image mx-3 my-3" src=" {{ asset('storage/'. $image->url )}}" alt="" class="col-6 mx-2">
             @endforeach
             <a href="">
+               
                 <h1 class="mx-3">{{$post->name}}</h1>
             </a>
 
