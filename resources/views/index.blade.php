@@ -200,7 +200,7 @@ body{
     <main>
     
         <div class="d-flex px-4 col-12  justify-content-end" style="height:6vh;">
-
+        <button type="button" class="btn btn-secondary mx-5"><a href="/create">SHARE YOUR ADVENTURE</a></button>
             <form action="{{ route('filter-posts') }}" method="GET" class="col-7">
                 @csrf
                 <div class="input-group mb-3">
@@ -214,7 +214,7 @@ body{
                     <button type="submit" class="btn btn-primary">Filter</button>
                     <button type="submit" name="order" value="latest" class="btn btn-primary mx-3">Latest</button>
                     <button type="submit" name="order" value="oldest" class="btn btn-primary mx-3">Oldest</button>
-                    <button type="submit" class="btn btn-primary">Filter</button>
+                    
                 </div>
             </form>
         </div>
@@ -229,7 +229,7 @@ body{
                 <div class="flip-card-inner" style="height: 60vh;">
                     <div class="flipcard">
                         @foreach($post->images as $image)
-                        <div class="d-flex flex-column"> <img class="image mx-3 my-5 col-10" src="{{ asset('storage/images/' . $image->url) }}"  alt="" style="max-height: 70%;">
+                        <div class="d-flex flex-column"> <img class="image mx-3 my-5 col-10" src="{{ asset('storage/' . $image->url) }}"  alt="" style="max-height: 70%;">
                        </div>
                         @endforeach
                         <a href="">

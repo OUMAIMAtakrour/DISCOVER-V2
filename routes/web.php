@@ -19,7 +19,8 @@ use App\Http\Controllers\StatisticsController;
 |
 */
 
-Route::get('/', [PostController::class,"index"]);
+Route::get('/', [PostController::class, 'index'])->name('index');
+
 Route::get('/create', [PostController::class,"create"]);
 Route::post('/create', [PostController::class,"store"]);
 Route::get('/filter-posts', [PostController::class, 'filterPosts'])->name('filter-posts');
