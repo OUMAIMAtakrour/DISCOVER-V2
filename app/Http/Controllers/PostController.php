@@ -63,21 +63,23 @@ class PostController extends Controller
     {
         $destinationId = $request->input('id');
         $order = $request->input('order');
-
+    
         $query = Post::query();
-
+    
         if ($destinationId) {
-            $query->where('id', $destinationId);
+            // Use the correct foreign key column
+            $query->where('destination_id', $destinationId);
         }
-
+    
         if ($order === 'latest') {
-            $query->orderBy('id', 'desc');
+            $query->orderBy('created_at', 'desc');
         } elseif ($order === 'oldest') {
-            $query->orderBy('id', 'asc');
+            $query->orderBy('created_at', 'asc');
         }
-
+    
         $posts = $query->get();
-
+    
         return view('partials.posts', ['posts' => $posts])->render();
     }
+    
 }
