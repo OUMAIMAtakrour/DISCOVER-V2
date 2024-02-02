@@ -1,0 +1,36 @@
+
+    /* This container is needed to position the front and back side */
+    .flip-card-inner {
+        /* position: relative; */
+        height: auto;
+        border-radius: 20px;
+        box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.45);
+        transition: transform 0.8s;
+        transform-style: preserve-3d;
+    }
+
+    /* Do an horizontal flip when you move the mouse over the flip box container */
+    .flip-card:hover .flip-card-inner {
+        height: auto;
+        transform: rotateY(180deg);
+
+    }
+
+    /* Position the front and back side */
+    .flipcard,
+    .flip-card-back {
+        height: auto;
+        position: absolute;
+
+        -webkit-backface-visibility: hidden;
+        /* Safari */
+        backface-visibility: hidden;
+    }
+
+
+
+
+    .flip-card-back {
+
+        transform: rotateY(180deg);
+    }

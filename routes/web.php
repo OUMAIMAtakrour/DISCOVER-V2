@@ -1,7 +1,11 @@
 <?php
 
+use App\Http\Controllers\DestinationController;
+use App\Http\Controllers\ImageController;
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\StatisticsController;
+
 
 
 /*
@@ -19,3 +23,6 @@ Route::get('/', [PostController::class,"index"]);
 Route::get('/create', [PostController::class,"create"]);
 Route::post('/create', [PostController::class,"store"]);
 Route::get('/filter-posts', [PostController::class, 'filterPosts'])->name('filter-posts');
+Route::get('/statistics', [
+    StatisticsController::class, 'index'
+])->name('statistics');

@@ -10,7 +10,7 @@ class Post extends Model
 {
     use HasFactory;
 
-    protected $fillable = ["title", "description"];
+    protected $fillable = ["id","title", "description", "destination_id"];
 
     // protected $with = ["images"];
 
