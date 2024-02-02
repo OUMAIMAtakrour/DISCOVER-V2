@@ -19,6 +19,6 @@ class Post extends Model
     }
     public function destination()
     {
-        return $this->belongsTo(DestinationModel::class);
+        return $this->belongsTo(Destination::class);
     }
 }

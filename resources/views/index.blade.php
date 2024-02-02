@@ -175,27 +175,34 @@
     </header>
 
     <main>
-        <form action="{{ route('filter-posts') }}" method="GET">
-            @csrf
-            <div class="input-group mb-3">
-                <label for="inputGroupSelect01" class="input-group-text">Destinations</label>
-                <select name="id" class="form-select">
-                    <option value="">All Destinations</option>
-                    @foreach ($destinations as $destination)
-                    <option value="{{ $destination->id }}">{{ $destination->des_name }}</option>
-                    @endforeach
-                </select>
-                <button type="submit" class="btn btn-primary">Filter</button>
-            </div>
-        </form>
+        <p>DESTINATIONS COUNT:{{$destinations->count()}}</p>
+        <div class="d-flex px-4 col-12  justify-content-end" style="height:6vh;">
+
+            <form action="{{ route('filter-posts') }}" method="GET" class="col-7">
+                @csrf
+                <div class="input-group mb-3">
+                    <label for="inputGroupSelect01" class="input-group-text">Destinations</label>
+                    <select name="id" class="form-select">
+                        <option value="">All Destinations</option>
+                        @foreach ($destinations as $destination)
+                        <option value="{{ $destination->id }}">{{ $destination->des_name }}</option>
+                        @endforeach
+                    </select>
+                    <button type="submit" class="btn btn-primary">Filter</button>
+                    <button type="submit" name="order" value="latest" class="btn btn-primary mx-3">Latest</button>
+                    <button type="submit" name="order" value="oldest" class="btn btn-primary mx-3">Oldest</button>
+                    <button type="submit" class="btn btn-primary">Filter</button>
+                </div>
+            </form>
+        </div>
 
         <!-- <div id="postsContainer"> -->
-            <!-- Include the partial view to display posts -->
-            <!-- @include('partials.posts', ['posts' => $posts]) -->
+        <!-- Include the partial view to display posts -->
+        <!-- @include('partials.posts', ['posts' => $posts]) -->
         <!-- </div> -->
 
         @foreach($posts as $post)
-        <div class="mx-5 my-5 stretching ">
+        <div class="mx-5 my-5 stretching my-5 ">
             <a href="">
 
                 <h1 class="mx-3">{{$post->title}}</h1>
