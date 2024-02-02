@@ -229,7 +229,7 @@ body{
                 <div class="flip-card-inner" style="height: 60vh;">
                     <div class="flipcard">
                         @foreach($post->images as $image)
-                        <div class="d-flex flex-column"> <img class="image mx-3 my-5 col-10" src="{{ asset('storage/' . $image->url) }}"  alt="" style="max-height: 70%;">
+                        <div class="d-flex flex-column"> <img src="{{ asset('storage/uploads/' . $image->url) }}" alt="Image" class="col-1">
                        </div>
                         @endforeach
                         <a href="">
