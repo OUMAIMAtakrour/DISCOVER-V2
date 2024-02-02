@@ -41,33 +41,33 @@ class PostController extends Controller
             'des_name' => 'required',
         ]);
     
-        DB::beginTransaction();  // Begin a database transaction
+        DB::beginTransaction(); 
     
         try {
-            // Upload image
-            $imagePath = $request->file('image')->store('/uploads', 'public');
+            
+            $imagePath = $request->file('image')->store('uploads', 'public');
     
-            // Create or retrieve destination
+           
             $destination = Destination::firstOrCreate(['des_name' => $request->input('des_name')]);
     
-            // Create post and associate with the destination
+          
             $post = new Post([
                 'title' => $request->input('title'),
                 'description' => $request->input('description'),
             ]);
             $destination->posts()->save($post);
     
-            // Create image record with foreign key reference to post
+            
             $image = new Image([
                 'url' => $imagePath,
                 'post_id' => $post->id,
             ]);
             $image->save();
     
-            DB::commit();  // Commit the transaction if all operations succeed
+            DB::commit(); 
         } catch (\Exception $e) {
             dd($e->getMessage());  
-            DB::rollBack();  // Rollback the transaction if an exception occurs
+            DB::rollBack();  
             return redirect()->back()->with('error', 'Error creating post.');
         }
     
