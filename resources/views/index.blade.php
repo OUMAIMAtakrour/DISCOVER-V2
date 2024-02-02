@@ -114,7 +114,7 @@
     .image {
         width: 60%;
         transition: width 0.5s ease 0s;
-height: 60vh;
+        height: 60vh;
         border-radius: 20px;
 
     }
@@ -122,7 +122,7 @@ height: 60vh;
     .image:hover {
         width: 90%;
         max-height: 90vh;
-        
+
     }
 
     .stretching {
@@ -175,15 +175,35 @@ height: 60vh;
     </header>
 
     <main>
+        <form action="{{ route('filter-posts') }}" method="GET">
+            @csrf
+            <div class="input-group mb-3">
+                <label for="inputGroupSelect01" class="input-group-text">Destinations</label>
+                <select name="id" class="form-select">
+                    <option value="">All Destinations</option>
+                    @foreach ($destinations as $destination)
+                    <option value="{{ $destination->id }}">{{ $destination->des_name }}</option>
+                    @endforeach
+                </select>
+                <button type="submit" class="btn btn-primary">Filter</button>
+            </div>
+        </form>
+
+        <!-- <div id="postsContainer"> -->
+            <!-- Include the partial view to display posts -->
+            <!-- @include('partials.posts', ['posts' => $posts]) -->
+        <!-- </div> -->
+
         @foreach($posts as $post)
         <div class="mx-5 my-5 stretching ">
-            @foreach($post->images as $image)
-                <img class="image mx-3 my-3" src=" {{ asset('storage/'. $image->url )}}" alt="" class="col-6 mx-2">
-            @endforeach
             <a href="">
-               
-                <h1 class="mx-3">{{$post->name}}</h1>
+
+                <h1 class="mx-3">{{$post->title}}</h1>
             </a>
+            @foreach($post->images as $image)
+            <img class="image mx-3 my-3" src=" {{ asset('storage/'. $image->url )}}" alt="" class="col-6 mx-2">
+            @endforeach
+
 
             <p class="my-3 mx-3 py-3">{{$post->description}}</< /p>
 

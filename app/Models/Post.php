@@ -17,4 +17,8 @@ class Post extends Model
     public function images(){
         return $this->hasMany(Image::class);
     }
+    public function destination()
+    {
+        return $this->belongsTo(DestinationModel::class);
+    }
 }

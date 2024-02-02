@@ -9,25 +9,40 @@
 </head>
 
 <body>
-<form action='/create' method="post" class="col-10 mx-auto my-4" enctype="multipart/form-data">
-    @csrf
-    <div class="mb-3">
-        <label for="title" class="form-label">TITLE</label>
-        <input type="text" name="title" class="form-control" placeholder="Enter the title" required>
-    </div>
+    <form action='/create' method="post" class="col-10 mx-auto my-4" enctype="multipart/form-data">
+        @csrf
+        <div class="mb-3">
+            <label for="title" class="form-label">TITLE</label>
+            <input type="text" name="title" class="form-control" placeholder="Enter the title" required>
+        </div>
 
-    <div class="mb-3">
-        <label for="description" class="form-label">DESCRIPTION</label>
-        <textarea class="form-control" name="description" placeholder="Enter the description" rows="5" required></textarea>
-    </div>
- 
-    <div class="mb-3">
-        <input type="file" class="form-control" id="inputGroupFile02" name="image" accept="image/*" required>
-        <label for="inputGroupFile02" class="input-group-text">UPLOAD IMAGE</label>
-    </div> 
+        <div class="mb-3">
+            <label for="description" class="form-label">DESCRIPTION</label>
+            <textarea class="form-control" name="description" placeholder="Enter the description" rows="5" required></textarea>
+        </div>
+        
 
-    <button type="submit" class="btn btn-primary">Add Post</button>
-</form>
+      
+        <div class="input-group mb-3">
+            <label for="inputGroupSelect01" class="input-group-text" name="des_name" >OPTIONS</label>
+       <select name="des_name" id="inputGroupSelect01" class="form-control">
+            <option selected>Choose...</option>
+            @foreach ($destinations as $destination)
+       <option value="1" name="des_name" >{{ $destination->des_name }}</option>
+       @endforeach
+       </select>
+        </div>
+
+
+
+
+        <div class="mb-3">
+            <input type="file" class="form-control" id="inputGroupFile02" name="image" accept="image/*" required>
+            <label for="inputGroupFile02" class="input-group-text">UPLOAD IMAGE</label>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Add Post</button>
+    </form>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
